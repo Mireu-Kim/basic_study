@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <title>JS Basic Study</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+
+	<body>
+		<h3>GPT와 함께하는 자바스크립트 기본 스터디</h3>
+
+		<div>
+			<p>1. HTML 요소 선택과 내용 변경</p>
+			<p id="title">안녕하세요!</p>
+			<script>
+				// id가 "title"인 요소를 자바스크립트로 선택하세요.
+				// 해당 요소의 텍스트를 "반갑습니다!"로 변경하세요.
+				let title = document.getElementById("title");
+				title.innerText = "환영합니다.";
+			</script>
+		</div>
+
+		<hr>
+
+		<div>
+			<p>2.버튼 클릭 이벤트</p>
+			<button id="changeTextButton">클릭하면 텍스트 변경</button>
+			<p id="text">기본 텍스트</p>
+			<script>
+				// 1. id가 "changeTextButton"인 버튼과 "text"인 <p> 요소를 선택하세요.
+				// 2. 버튼을 클릭하면 <p> 요소의 텍스트를 "변경된 텍스트"로 바꾸세요.
+				let clickBtn = document.getElementById("changeTextButton");
+				let basicText = document.getElementById("text");
+
+				clickBtn.addEventListener("click", function(){
+					basicText.innerText = "변경된 텍스트";
+				})
+			</script>
+		</div>
+
+		<hr>
+
+		<div>
+			<p>3. 클래스 추가 및 제거</p>
+
+			<div id="box" style="width: 100px; height: 100px; background-color: blue;"></div>
+			<button id="toggleColorButton">색상 변경</button>
+
+			<script>
+				// 1. id가 "box"인 요소와 "toggleColorButton"인 버튼을 선택하세요.
+				// 2. 버튼을 클릭하면 <div> 요소에 "red"라는 클래스를 추가하거나 제거하세요.
+				// 3. CSS에서 .red 클래스는 배경색이 빨간색이 되도록 설정하세요.
+
+				let colorBox = document.getElementById("box");
+				let colorBtn = document.getElementById("toggleColorButton");
+				colorBtn.addEventListener("click", function(){
+					colorBox.classList.toggle("red");
+				})
+			</script>
+		</div>
+
+		<hr>
+
+		<div>
+			<p>4. DOM 요소 생성 및 추가</p>
+
+			<ul id="list">
+				<li>첫 번째 항목</li>
+				<li>두 번째 항목</li>
+			</ul>
+			<button id="addItemButton">항목 추가</button>
+
+			<script>
+				// 1. id가 "list"인 <ul> 요소와 "addItemButton"인 버튼을 선택하세요.
+				// 2. 버튼을 클릭할 때마다 새로운 <li> 항목을 추가하세요.
+				// 새 항목의 내용은 "새로운 항목"으로 설정하세요.
+
+				let listWrap = document.getElementById("list");
+				let addButton = document.getElementById("addItemButton");
+
+				addButton.addEventListener("click", function(){
+					let listLi = document.createElement("li");
+					listLi.textContent = "새로운 항목";
+
+					listWrap.appendChild(listLi);
+				})
+			</script>
+		</div>
+
+		<hr>
+
+		<div>
+			<p>5. 폼 데이터 가져오기</p>
+
+			<input type="text" id="nameInput" placeholder="이름을 입력하세요" />
+			<button id="submitButton">제출</button>
+			<p id="output"></p>
+
+			<script>
+				// 1. id가 "nameInput"인 입력 필드, "submitButton"인 버튼, "output"인 <p> 요소를 선택하세요.
+				// 2. 버튼을 클릭하면 입력 필드에 입력된 텍스트를 <p> 요소에 표시하세요.
+
+				let inputBox = document.getElementById("nameInput");
+				let submitButton = document.getElementById("submitButton");
+				let outPut = document.getElementById("output");
+
+				submitButton.addEventListener("click", function(){
+					outPut.innerHTML = inputBox.value;
+				})
+			</script>
+		</div>
+
+		<hr>
+
+		<div>
+			<p>6. 스크롤 이벤트</p>
+
+			<div id="header" style="height: 50px; background-color: lightblue;">헤더</div>
+			<div style="height: 500px;">스크롤 해보세요!</div>
+			<script>
+				// 1. id가 "header"인 요소를 선택하세요.
+				// 2. window의 "scroll" 이벤트를 감지해 스크롤 위치가 100 이상이면
+				//    헤더의 배경색을 빨간색으로 변경하고, 그렇지 않으면 원래 색상으로 복원하세요.
+
+				let header = document.getElementById("header");
+				window.addEventListener("scroll", function(){
+					console.log(window.scrollY);
+					if(window.scrollY >= 100) {
+						header.classList.add("red");
+					}
+					else {
+						header.classList.remove("red");
+					}
+				})
+			</script>
+		</div>
+
+		<hr>
+
+		<div>
+			<p>7. 모달 창 열고 닫기</p>
+
+			<button id="openModalButton">모달 열기</button>
+			<div id="modal" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 20px; border: 1px solid black;">
+				<p>모달 내용</p>
+				<button id="closeModalButton">닫기</button>
+			</div>
+
+			<script>
+			// 1. id가 "openModalButton", "modal", "closeModalButton"인 요소를 선택하세요.
+			// 2. "openModalButton" 클릭 시 모달을 표시,
+			//  "closeModalButton" 클릭 시 모달을 숨기세요
+
+			let openButton = document.getElementById("openModalButton");
+			let modalBody = document.getElementById("modal");
+			let closeButton = document.getElementById("closeModalButton");
+
+			openButton.addEventListener("click", function(){
+				modalBody.classList.add("open");
+			});
+
+			closeButton.addEventListener("click", function(){
+				modalBody.classList.remove("open");
+			})
+			</script>
+		</div>
+
+
+		<style>
+			.red {background-color: red !important;}
+			.open {display:block !important;}
+		</style>
+	</body>
+</html>
